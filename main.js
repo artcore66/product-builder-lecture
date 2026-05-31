@@ -77,11 +77,11 @@ customElements.define('lotto-ball', LottoBall);
 // Theme Toggle Logic
 const themeToggle = document.getElementById('theme-toggle');
 const modeIcon = themeToggle.querySelector('.mode-icon');
-const htmlElement = document.documentElement;
+const themeTarget = document.body;
 
 // Check for saved theme
 const savedTheme = localStorage.getItem('theme') || 'dark';
-htmlElement.setAttribute('data-theme', savedTheme);
+themeTarget.setAttribute('data-theme', savedTheme);
 updateThemeUI(savedTheme);
 
 function updateThemeUI(theme) {
@@ -89,10 +89,10 @@ function updateThemeUI(theme) {
 }
 
 themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
+    const currentTheme = themeTarget.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
-    htmlElement.setAttribute('data-theme', newTheme);
+    themeTarget.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeUI(newTheme);
 });
